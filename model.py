@@ -41,3 +41,4 @@ def predict_models(arousal_model, valence_model, X):
     arousal_text = pd.Series(arousal_model.predict(X).flatten())
     valence_text = pd.Series(valence_model.predict(X).flatten())
     return arousal_text, valence_text
+
