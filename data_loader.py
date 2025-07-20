@@ -4,9 +4,13 @@ from io import StringIO
 from sklearn.preprocessing import MinMaxScaler
 import os
 from google.colab import drive
+import sys
 
 def mount_drive():
-    drive.mount('/content/drive')
+    if 'google.colab' in sys.modules:
+        drive.mount('/content/drive')
+    else:
+        print("Not in Colab environment; skipping Drive mount.")
 
 def create_drive_folder(folder_path):
     os.makedirs(folder_path, exist_ok=True)
