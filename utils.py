@@ -94,18 +94,4 @@ def calculate_linear_valence(audio_df):
     weights = {
         'energy': 0.5,  # Increased to cover energy_extra
         'mode': 0.25,
-        'tempo': 0.15,
-        'danceability': 0.1
-    }
-    valence = sum(weights[f] * audio_df[f] for f in weights)
-    valence = (valence - valence.min()) / (valence.max() - valence.min() + 1e-10)
-    return valence
 
-# Save metrics to CSV
-def save_metrics(drive_folder, arousal_mse, arousal_r2, valence_mse, valence_r2, f1):
-    metrics_df = pd.DataFrame({
-        'Metric': ['Arousal MSE', 'Arousal R²', 'Valence MSE', 'Valence R²', 'F1 Score (Quadrant)'],
-        'Value': [arousal_mse, arousal_r2, valence_mse, valence_r2, f1]
-    })
-    metrics_df.to_csv(drive_folder + 'training_metrics.csv', index=False)
-    print("Training metrics saved to Google Drive.")
