@@ -1,3 +1,6 @@
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Suppress TensorFlow warnings
+
 import numpy as np
 import pandas as pd
 from data_loader import mount_drive, create_drive_folder, load_datasets
@@ -87,3 +90,4 @@ if not song_df.empty:
 
     # Add Spotify columns
     add_spotify_columns_to_final_csv(song_df, predictions_df, drive_folder)
+
